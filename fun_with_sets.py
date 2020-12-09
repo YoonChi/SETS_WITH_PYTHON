@@ -6,15 +6,12 @@ def power_set(list1):
 
     # Base case 
     if len(list1) == 0:
-        return [list1] # return [{}] 
+        return [list1]  
     
-    # pop off the far right element from list1 
     remove_item = list1.pop()
 
-    # Recursive call 
+    # recursive call 
     subsets = power_set(list1)
-
-    # recursiveness is done. traversing back up now. 
 
     # make a copy of subsets each time the power_set function is called 
     list2 = copy.deepcopy(subsets)
@@ -23,7 +20,6 @@ def power_set(list1):
     list2.append([remove_item])
     
     # insert removed item into each subset that is in the 'subsets' list 
-    # then combine 'subsets' list and list2 
     for sub in subsets:
         # cannot take sub(set) of an empty set 
         if sub:
@@ -43,7 +39,6 @@ def k_subsets_naive(list1, k):
     k_list = []
 
     for sub in list2:
-        # print(len(sub))
         if len(sub) == k: # add all 2-subsets of list into k_list 
             k_list.append(sub)
 
@@ -52,7 +47,7 @@ def k_subsets_naive(list1, k):
 
 def k_subsets_better(list1, k):
 
-    # Base case : return list within a list 
+    # base case : return list within a list 
     if len(list1) == k:
         return [list1]
     
